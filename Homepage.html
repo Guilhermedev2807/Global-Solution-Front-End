@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memoriza Saúde</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    #logo {
+        height: 150px;
+  max-width: 1000px; /* ajuste conforme necessário */
+  width: auto;  
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: #FFEFD2;
+    }
+
+    .hero img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      color: #3D3D3D;
+      margin-top: 1rem;
+    }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section img {
+    display: block;
+    max-width: 100%;
+    height: auto; 
+    border-radius: 12px;
+    margin-bottom: 20px; 
+    margin-left: auto;   
+    margin-right: auto;  
+    }
+
+    .img-centralizada {
+    display: block;
+    max-width: 30%; 
+    width: 75%;
+    height: 60%;
+    border-radius: 12px;
+    margin: 20px auto;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      color: #3D3D3D;
+      margin-bottom: 0.5rem;
+    }
+
+    .section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: #7FAF95;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .highlight {
+      color: #C2A32E;
+      font-weight: 800;
+    }
+
+    .consultas-img {
+      max-width: 90%;
+      border-radius: 12px;
+      margin: 1rem auto;
+    }
+
+    footer {
+      background: #f5f5f5;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
+
+    footer a {
+      margin: 0 0.5rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    /* Responsividade e menu mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #f9f9f9;
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid #ddd;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.4rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (min-width: 1300px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #004e92, #000428);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .intro, .how-it-works, .testimonials {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .intro p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+    }
+
+    .hero-media {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-media img {
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .cta {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .cta a {
+      background-color: #004e92;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .cta a:hover {
+      background-color: #0072ff;
+    }
+
+    .how-it-works {
+      background-color: #eef3f7;
+    }
+
+    .how-it-works h2 {
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 250px;
+    }
+
+    .step img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .testimonials h2 {
+      margin-bottom: 20px;
+    }
+
+    .testimonial {
+      font-style: italic;
+      margin: 10px auto;
+      max-width: 700px;
+    }
+
+    .logos img {
+      height: 40px;
+      margin: 10px;
+    }
+
+    footer {
+      background-color: #000428;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 8px;
+    }
+
+    .highlight {
+      transition: background-color 0.6s ease;
+      background-color: #d8eafd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img_homepage/logo_memorizasaude.png" alt="Memoriza Saúde" id="logo">
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav>
+      <a href="inicio.html">Início</a>
+      <a href="contato.html">Simulador</a>
+      <a href="contato.html">Contato</a>
+      <a href="integrantes.html">Integrantes</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
+  <section class="intro">
+    <p>
+      O Guardian AI é um simulador interativo que te coloca no centro de uma crise: uma enchente iminente ameaça a cidade.
+      Seu desafio é tomar decisões estratégicas em tempo real, aprender com as consequências e entender como sua atuação pode salvar vidas e evitar o caos.
+    </p>
+  </section>
+
+  <section class="hero-media">
+    <img src="img/enchete.jpg" width="1000" height="450" alt="Imagem de enchente impactante">
+  </section>
+
+  <section class="cta">
+    <a id="startButton" href="simulador.html">Começar o Desafio</a>
+  </section>
+
+  <section class="how-it-works" id="how">
+    <h2>Como Funciona</h2>
+    <div class="steps">
+      <div class="step">
+        <img src="img/papelsocial.jpeg" width="300" height="100" alt="Escolha seu papel">
+        <p><strong>Escolha seu papel:</strong> Prefeito, Engenheiro, Defesa Civil...</p>
+      </div>
+      <div class="step">
+        <img src="img/decisões.jpeg" width="500" height="100" alt="Tome decisões">
+        <p><strong>Tome decisões:</strong> Com base em dados, tempo e recursos limitados.</p>
+      </div>
+      <div class="step">
+        <img src="img/impacto.jpeg" width="200" height="100" alt="Veja o impacto">
+        <p><strong>Veja o impacto:</strong> A cidade reage às suas escolhas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Validação</h2>
+    <p class="testimonial">"Uma ferramenta essencial para educação em gestão de riscos." — Especialista em Defesa Civil</p>
+    <p class="testimonial">"Simples, envolvente e poderosa para conscientização." — Professor da FIAP</p>
+    <div class="logos">
+      <img src="logos/fiap.png" alt="Logo FIAP">
+      <img src="logos/defesa_civil.png" alt="Logo Defesa Civil">
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Guardian AI. Todos os direitos reservados.</p>
+    <p>
+      <a href="sobre.html">Sobre</a> |
+      <a href="simulador.html">Simulador</a> |
+      <a href="contato.html">Contato</a>
+    </p>
+  </footer>
+  
+
+</body>
+</html>
