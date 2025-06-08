@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HelpFlood</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset e fonte */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Definir altura total para html e body */
+    html, body {
+      height: 100%;
+    }
+
+    /* Usar flex no body para colocar footer no fim */
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Container do conteúdo principal com flex-grow para empurrar footer */
+    .content {
+      flex: 1;
+    }
+
+    header {
+      background: #f9f9f9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    #logo {
+      height: 150px;
+      max-width: 1000px;
+      width: auto;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: #FFEFD2;
+    }
+
+    .hero img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      color: #3D3D3D;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .img-centralizada {
+      display: block;
+      max-width: 30%;
+      width: 75%;
+      height: 60%;
+      border-radius: 12px;
+      margin: 20px auto;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      color: #3D3D3D;
+      margin-bottom: 0.5rem;
+    }
+
+    .section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: block;
+      padding: 0.7rem 1.5rem;
+      background: #7FAF95;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 20px auto 0 auto;
+    }
+
+    .highlight {
+      color: #C2A32E;
+      font-weight: 800;
+    }
+
+    .consultas-img {
+      max-width: 90%;
+      border-radius: 12px;
+      margin: 1rem auto;
+    }
+
+    footer {
+      background: #f5f5f5;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      /* Footer sempre no fim */
+      /* Removido position fixed para que o footer fique ao final do conteúdo */
+    }
+
+    footer a {
+      margin: 0 0.5rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    /* Responsividade e menu mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #f9f9f9;
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid #ddd;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.4rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (min-width: 1300px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      color: #555;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .mensagem {
+      margin-top: 20px;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f8fb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #f9f9f9;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+    .faq-item h2 {
+      font-size: 1.2rem;
+      cursor: pointer;
+      background-color: #e0f0f8;
+      padding: 1rem;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .faq-item h2:hover {
+      background-color: #cce5f1;
+    }
+    .faq-item p {
+      display: none;
+      padding: 1rem;
+      background-color: #fff;
+      border-left: 4px solid #00587a;
+      border-radius: 0 0 8px 8px;
+    }
+    footer {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+    a {
+      color: #00aaff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo HelpFlood.png" alt="Memoriza Saúde" id="logo" />
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav>
+      <a href="Homepage.html">Início</a>
+      <a href="sobre.html">Sobre Simulador</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="contato.html">Contato</a>
+      <a href="integrantes.html">Integrantes</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- Div que envolve o conteúdo principal para ocupar espaço -->
+  <h1>FAQ - Perguntas Frequentes - HelpFlood</h1>
+    <p>Suas decisões moldam o futuro da cidade em face dos desastres.</p>
+  </header>
+
+  <div class="container">
+
+    <div class="faq-item">
+      <h2>📌 O que é o HelpFlood?</h2>
+      <p>O HelpFlood é um simulador interativo e gamificado que coloca você no papel de um tomador de decisões em situações de enchente. O objetivo é educar sobre ações de prevenção e gestão de crises, mostrando o impacto das escolhas em tempo real.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>🌊 Por que falar sobre enchentes?</h2>
+      <p>As enchentes são um dos desastres mais comuns nas cidades brasileiras. O simulador ajuda a entender como se preparar, prevenir danos e salvar vidas com planejamento e ação estratégica.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>🎮 Como o simulador funciona?</h2>
+      <p>Você escolhe um papel (gestor, engenheiro, morador), toma decisões durante cenários de crise e vê os impactos em indicadores como segurança, economia e qualidade de vida.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>🧠 Por que usar gamificação?</h2>
+      <p>Gamificar é tornar o aprendizado mais envolvente. Ao interagir com os desafios de forma lúdica, o usuário aprende com mais profundidade e empatia, experimentando diretamente as consequências das suas escolhas.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>📊 De onde vêm os dados?</h2>
+      <p>Os cenários são baseados em dados reais de enchentes e emergências no Brasil. A lógica do simulador foi construída com Python e simplificada para tornar a experiência acessível e educativa.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>👤 Quem desenvolveu o HelpFlood?</h2>
+      <p>Desenvolvido por [Seu Nome], com inspiração em projetos da FIAP, Defesa Civil e estudos sobre cidades resilientes. Utiliza Streamlit e tecnologias web para interatividade.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>🚀 Como começar a simulação?</h2>
+      <p>Vá para a <a href="index.html">página inicial</a> e clique em <strong>“Começar o Desafio”</strong> para iniciar sua jornada contra as enchentes!</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>📄 Onde posso saber mais sobre o projeto?</h2>
+      <p>Acesse a <a href="sobre.html">página Sobre</a> para entender a missão, a metodologia e os objetivos pedagógicos do HelpFlood.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>📬 Como posso entrar em contato?</h2>
+      <p>Você pode nos escrever através do formulário de contato no rodapé do site ou pelo e-mail: <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="faq.html">Sobre Simulador</a> |
+    <a href="contato.html">Simulador</a> |
+    <a href="lembretes.html">Contato</a> |
+    <a href="recompensas.html">Faq</a>
+  </footer>
+
+  <script>
+    const questions = document.querySelectorAll('.faq-item h2');
+    questions.forEach((question) => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+  </script>
+</body>
+</html>

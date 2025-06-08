@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HelpFlood</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    header {
+      background: #f9f9f9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    #logo {
+      height: 150px;
+      max-width: 1000px;
+      width: auto;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0 20px;
+      color: #333;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 20px 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    footer {
+      background: #f5f5f5;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      margin-top: auto;
+    }
+
+    footer a {
+      margin: 0 0.5rem;
+      color: #333;
+      text-decoration: none;
+    }
+        /* Responsividade e menu mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #f9f9f9;
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid #ddd;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.4rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (min-width: 1300px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }}
+      body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    header {
+      background-color: #f9f9f9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #logo {
+      height: 120px;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      color: #3D3D3D;
+      margin-bottom: 1rem;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #FFEFD2;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #7FAF95;
+      color: white;
+      font-weight: bold;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <img src="img/logo HelpFlood.png" alt="Logo" id="logo">
+      <nav>
+        <a href="inicio.html">Início</a>
+        <a href="lembretes.html">Sobre Simulador</a>
+        <a href="recompensas.html">Simulador</a>
+        <a href="contato.html">Contato</a>
+        <a href="integrantes.html">Integrantes</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+  
+    <section class="section">
+      <h2>Simulador de Enchentes</h2>
+      <p>Preencha os dados abaixo e veja se um alerta será emitido.</p>
+  
+      <div class="form-container">
+        <label for="regiao">Região:</label>
+        <input type="text" id="regiao" placeholder="Ex: Bairro Centro" required>
+  
+        <label for="chuva">Nível de chuva (mm):</label>
+        <input type="number" id="chuva" placeholder="Ex: 35" required>
+  
+        <button onclick="simular()">Simular</button>
+  
+        <div id="resultado"></div>
+      </div>
+    </section>
+ 
+  
+    <script>
+      function simular() {
+        const regiao = document.getElementById('regiao').value.trim();
+        const chuva = parseFloat(document.getElementById('chuva').value);
+        const resultado = document.getElementById('resultado');
+  
+        if (!regiao || isNaN(chuva)) {
+          resultado.innerHTML = "Por favor, preencha todos os campos corretamente.";
+          resultado.style.color = "#cc0000";
+          return;
+        }
+  
+        let risco = '';
+        let cor = '';
+  
+        if (chuva < 10) {
+          risco = "Sem risco.";
+          cor = "#4CAF50";
+        } else if (chuva < 30) {
+          risco = "Risco moderado - Atenção.";
+          cor = "#FFA500";
+        } else if (chuva < 60) {
+          risco = "Risco alto - Alerta!";
+          cor = "#FF5722";
+        } else {
+          risco = "Risco extremo - Emergência!";
+          cor = "#B71C1C";
+        }
+  
+        resultado.innerHTML = `
+          <p>Região: <strong>${regiao}</strong></p>
+          <p>Nível de chuva: <strong>${chuva} mm</strong></p>
+          <p style="color: ${cor}"><strong>${risco}</strong></p>
+        `;
+      }
+    </script>
+  <footer>
+    <a href="faq.html">Sobre Simulador</a> |
+    <a href="contato.html">Simulador</a> |
+    <a href="lembretes.html">Contato</a> |
+    <a href="recompensas.html">Faq</a>
+  </footer>
+  </div>
+</body>
+</html>
